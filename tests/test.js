@@ -1,6 +1,6 @@
 /*global overload, console, require*/
 
-var overload = require('./overload');
+var overload = require('overload');
 
 (function () {
   

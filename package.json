@@ -1,0 +1,13 @@
+{
+  "author": "Saneyuki Tadokoro <post@saneyuki.gfunction.com>",
+  "name": "overload",
+  "description": "Pseudo-overloading in JavaScript",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Saneyan/Overload.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Saneyan/Overload.js.git"
+  },
+  "main": "lib/overload.js",
+  "dependencies": {}
+}
