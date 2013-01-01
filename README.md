@@ -4,6 +4,10 @@
 
 JavaScript does not support method overloading. But using Overload.js, pseudo-overloading is available in JavaScript.
 
+## Install
+
+`npm install overload.js`
+
 ## Usage
 
 `def` method defines a method that's called when appropriate parameters are assigned. `end` method returns a discriminator.
