@@ -100,6 +100,52 @@ end();
 discriminator('string');  // Any parameters are not matched.
 ```
 
+## Advanced Parameter Options
+
+Advance Parameter Options (APO) provides useful type selector. `all` method enables to select all types for a parameter.
+
+```js
+var discriminator = overload.
+
+  def([overload.all()], function (value) {
+    console.log('[*]: ' + value);
+  }).
+  
+end();
+
+discriminator('str'); // [*]: str
+discriminator(true);  // [*]: true
+```
+
+`except` method enables to select all types except specific types for a parameter.
+
+```js
+var discriminator = overload.
+
+  def([overload.except(Function, String)], function (value) {
+    console.log('[^(Function, String)]: ' + value);
+  }).
+  
+end();
+
+discriminator(3); // [^(Function, String)]: 3
+```
+
+`match` mathod enables to select specific types for a parameter.
+
+```js
+var discriminator = overload.
+
+  def([overload.match(Number, Boolean)], function (value) {
+    console.log('[(Number, Boolean)]: ' + value);
+  }).
+  
+end();
+
+discriminator(9); // [(Number, Boolean)]: 9
+discriminator(true);  // [(Number, Boolean)]: true
+```
+
 ## License
 
 Applying MIT License.
