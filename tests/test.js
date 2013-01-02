@@ -1,7 +1,7 @@
 /*global overload, console, assert, describe, it*/
 /*jslint indent: 2, node: true*/
 
-var overload = require('overload.js'),
+var overload = require('../lib/overload.js'),
   assert = require('assert');
 
 (function () {
@@ -181,6 +181,67 @@ var overload = require('overload.js'),
 
       it('should not match with any parameters', function () {
         assert(func('str'), 'not');
+      });
+    });
+    
+    
+    describe('All Type of A Parameter', function () {
+      
+      var func = overload.
+      
+        // Boolean bool, * all
+        def([Boolean, overload.all()], function (bool, all) {
+          log('[Boolean, *]: ' + bool + ', ' + all);
+          return '[Boolean, *]';
+        }).
+        
+        // This function is never called
+        def([Boolean, Number], function (bool, num) {
+          log('[Boolean, Number]: ' + bool + ', ' + num);
+          return '[Boolean, Number]';
+        }).
+        
+        end();
+        
+      it('should match with all type', function () {
+        assert(func(true, 'str'), '[Boolean, *]');
+        assert(func(true, 9), '[Boolean, *]');
+      });
+    });
+    
+    
+    describe('Matching With All Except Specific Types', function () {
+      
+      var func = overload.
+      
+        // String str, ^(Function, Number) value
+        def([String, overload.except(Function, Number)], function (str, value) {
+          log('[String, ^(Function, Number)]: ' + str + ', ' + value);
+          return '[String, ^(Function, Number)]';
+        }).
+        
+        end();
+      it('should match with all except Function and Number', function () {
+        assert(func('str', true), '[String, ^(Function, Number)]');
+      });
+    });
+    
+    
+    describe('Matching With Some Specific Types', function () {
+      
+      var func = overload.
+      
+        // (String, Function) value
+        def([overload.match(String, Function)], function (value) {
+          log('[(String, Function)]: ' + value);
+          return '[(String, Function)]';
+        }).
+        
+        end();
+        
+      it('should match with String or Function', function () {
+        assert(func('str'), '[(String, Function)]');
+        assert(func(function () {}), '[(String, Function)]');
       });
     });
   });
