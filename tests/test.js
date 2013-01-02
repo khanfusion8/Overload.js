@@ -221,6 +221,7 @@ var overload = require('../lib/overload.js'),
         }).
         
         end();
+        
       it('should match with all except Function and Number', function () {
         assert(func('str', true), '[String, ^(Function, Number)]');
       });
