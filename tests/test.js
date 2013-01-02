@@ -195,7 +195,6 @@ var overload = require('../lib/overload.js'),
           return '[Boolean, *]';
         }).
         
-        // This function is never called
         def([Boolean, Number], function (bool, num) {
           log('[Boolean, Number]: ' + bool + ', ' + num);
           return '[Boolean, Number]';
